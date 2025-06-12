@@ -1,2 +1,1 @@
-# GreatSpot-AI-Chat
-AI Chat Testing
+Add working chat UI demo to index.html
