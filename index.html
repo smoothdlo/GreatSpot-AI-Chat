@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GreatSpot Chat Test</title>
+  <title>GreatSpot GPT Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background-color: #f9f9f9;
+    }
+
+    #chat-box {
+      border: 1px solid #ccc;
+      padding: 1em;
+      height: 300px;
+      overflow-y: scroll;
+      background-color: #fff;
+      margin-bottom: 1em;
+    }
+
+    .msg {
+      margin: 0.5em 0;
+    }
+
+    .user {
+      font-weight: bold;
+    }
+
+    .bot {
+      color: green;
+    }
+
+    input[type="text"] {
+      padding: 0.5em;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to the GreatSpot Chat Demo</h1>
+  <h2>Welcome to the GreatSpot Chat Demo</h2>
 
-  <!-- Your chatbot script goes here -->
-  <!-- Replace this with your actual script when ready -->
-  <script src="https://example.com/your-chatbot-script.js" async></script>
+  <div id="chat-box"></div>
+
+  <input type="text" id="user-input" placeholder="Ask a question..." style="width: 70%;" />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+
+    function addMessage(sender, text) {
+      const msg = document.createElement('div');
+      msg.classList.add('msg');
+      msg.innerHTML = `<span class="${sender}">${sender}:</span> ${text}`;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const userText = input.value;
+      if (!userText) return;
+
+      addMessage('user', userText);
+      input.value = '';
+
+      // Simulated response from GPT
+      setTimeout(() => {
+        addMessage('bot', "I'm just a demo bot! When connected to GPT, I'll respond with real answers.");
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
